@@ -1,0 +1,7 @@
+-- sex
+
+local args = {
+    [1] = "Hoverboard"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvent.GetRoleplayItem:FireServer(unpack(args))

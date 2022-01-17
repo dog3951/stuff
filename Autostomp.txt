@@ -1,0 +1,10 @@
+while wait() do
+-- Kick before using so it has a higher chance of working
+
+local args = {
+    [1] = "Kick"
+}
+
+game:GetService("Players").LocalPlayer.Character.Fight.FightScript.FightEvent:FireServer(unpack(args))
+
+end

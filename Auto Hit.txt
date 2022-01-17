@@ -1,0 +1,10 @@
+while wait() do
+-- Make sure to punc before using because it prob wont work if you dont
+
+local args = {
+    [1] = "Slap"
+}
+
+game:GetService("Players").LocalPlayer.Character.Fight.FightScript.FightEvent:FireServer(unpack(args))
+
+end
