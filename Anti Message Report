@@ -1,0 +1,44 @@
+while wait() do
+    game.Players.LocalPlayer.UserId = 1
+end
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+local LP, Chatted = game:GetService('Players').LocalPlayer, Instance.new('BindableEvent')
+local Chat, MessagePosted = game:GetService('Chat')
+
+Chatted.Name = LP.Name..'_Chatted_Event'
+
+if Chat and Chat:FindFirstChild('ChatScript') and Chat.ChatScript:FindFirstChild('ChatMain') then
+    MessagePosted = require(Chat.ChatScript.ChatMain).MessagePosted
+
+    local Old
+    Old = hookmetamethod(game, '__namecall', function(self, ...)
+        local Method = getnamecallmethod()
+       
+        if self == MessagePosted and not checkcaller() and Method == 'Fire' then
+            Chatted:Fire(...)
+            return
+        end
+       
+        return Old(self, ...)
+    end)
+
+    local Old2
+    Old2 = hookmetamethod(game, '__index', newcclosure(function(self, Index)
+        if checkcaller() and self == LP and Index == 'Chatted' then
+            return Chatted.Event
+        end
+       
+        return Old2(self, Index)
+    end))
+end
+setfflag("AbuseReportScreenshotPercentage", 0)
+setfflag("DFFlagAbuseReportScreenshot", "False")
+getgenv().Settings = {
+	Filter = true,
+	CensorWord = "bleep",
+	OffensiveWords = {"ooga", "booga", "retard", "fag","nigger", "africa kid","unga", "bunga","kid", "trash","ez", "f","b", "a","c", "d","g", "e","f", "h","i", "j","k", "l","m", "n","o", "k","p", "q","r", "s","t", "u","v", "w","s", "y","z", "v","u", ":fly",";fly", ";kill",";cmds", "kill","yourself", "lmao","reported", "fuck","sh", "ni","black", "gay","Gay", "GAY","die", "kill","cares", "end","life", ""}
+}
+loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Enviie/Anti-Profanity-Roblox-/main/Anti%20Profanity.lua"))("Yes Watch Your Potty Mouth")
