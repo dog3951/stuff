@@ -1,0 +1,13 @@
+-- If you want to stop it set _G turnedon to false, set it to true to start it again
+
+_G.turnedon = true
+ 
+while _G.turnedon do
+    wait()
+    for i,v in pairs(workspace.Particles:GetChildren()) do
+        if v.Name == "Money" then
+             wait()
+             game.Players.LocalPlayer.Character:MoveTo(v.Bundle.Position)
+        end
+    end
+end
