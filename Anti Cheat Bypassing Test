@@ -1,0 +1,1 @@
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/Who-Is-E/Adeva-Global-AcBypass/main/Adeva.lua'),true))()
